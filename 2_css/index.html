@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repaso CSS</title>
+
+    <!-- CSS Interno (al documento HTML) -->
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header, header ul {
+            /* border: 1p solid; */
+            display: flex;
+            align-items: center;
+        }
+
+        header ul {
+            padding-left: 0;
+            list-style-type: none;
+            justify-content: space-between;
+        }
+        
+        header nav {
+            width: 40%;
+        }
+
+        header h1 {
+            font-size: 34px;
+        }
+
+        .logo-container {
+            width: 20%;
+        }
+
+        .portada {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f1edea;
+        }
+
+        .portada video {
+            width: 100%;
+        }
+
+    </style>
+
+    <!-- TO DO enlazar un archivo CSS externo -->
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="https://www.gstatic.com/marketing-cms/assets/images/f5/d3/a7f9db7045429cb6dc6be56bdcbe/google-logo-about.svg" alt="Imagen Google">
+        </div>
+
+        <nav>
+            <ul>
+                <li>Acerca de</li>
+                <li>Productos</li>
+                <li>Sobre la empresa</li>
+                <li>Noticias</li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+        <section class="portada">
+            <h1>Todo lo que anunciamos en Made by Google</h1>
+            <p>Conoce a los nuevos miembros de la familia Pixel</p>
+            <div>
+                <button>Comenzar</button>
+            </div>
+
+            <video src="https://www.gstatic.com/marketing-cms/d9/09/5d785c164c0b8e0f1756ed51a156/about-1250-hardwaredurabilityandsustainability-pt01-v30.mp4" loop autoplay muted></video>
+        </section>
+        <section></section>
+    </main>
+    <footer>
+        <nav></nav>
+        <div></div>
+    </footer>
+</body>
+</html>
