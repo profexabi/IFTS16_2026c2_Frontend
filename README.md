@@ -1,6 +1,24 @@
 # Frontend 2026 2º Cuatrimestre
 
 ## Cronograma clases
+
+### Prox clase CSS III
+- Uds absolutas y relativas
+- Combinadores
+- Pseudoclases
+- Continuar practicando
+
+#### Practica sugerida
+- [Clonar pagina google](https://about.google/intl/es_ALL/)
+
+
+---
+
+
+### CSS II
+- Lineamientos generales de diseño web
+- [Flex](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+
 ### CSS I
 - Desde CSS How To, recorrer todo CSS, ver box model, estilos basicos
 - Tarea sugerida para practicar, arranquen a clonar o a armar una pagina web y estilen
