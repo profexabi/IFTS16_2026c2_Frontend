@@ -1,0 +1,11 @@
+/* Fuentes descargadas, locales
+- Es la opcion ideal porque ahorramos una peticion de red 
+@font-face {
+    font-family: "Montserrat";
+    src: url();
+}
+*/
+
+body {
+    font-family: "Montserrat", sans-serif;
+}

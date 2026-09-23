@@ -1,12 +1,39 @@
 # Frontend 2026 2º Cuatrimestre
 
-## Cronograma clases
+## Tareas y Practicas para frontend
+- PFO 1 y 2 -> Con la entrega del 2 es suficiente
+    - Elaborar un portfolio
+    - Mejorarlo con CSS
+    - Entregar para antes del 18 nov
 
-### Prox clase CSS III
-- Uds absolutas y relativas
-- Combinadores
-- Pseudoclases
-- Continuar practicando
+---
+
+- TPO 1 y TPO2 -> GRUPALES
+    - Quienes trabajen en las articulaciones no tienen que presentarlas
+    - Entregar para antes del 25 nov
+
+#### Se deben mandar al mail con el link de la app deployada
+
+---
+
+
+## Cronograma clases
+### Deploy en Github
+1. Vamos a la pestaña Settings de nuestro repo (publico)
+2. Vamos hasta Pages
+3. Elegimos la rama (generalmente main) y -> Save
+
+### Otras opciones (ej proyectos con Back)
+- Netlify
+- Vercel
+- `bitacora/deployarApps.md`
+
+---
+
+
+### Prox clase
+- JavaScript I y II
+
 
 #### Practica sugerida
 - [Clonar pagina google](https://about.google/intl/es_ALL/)
