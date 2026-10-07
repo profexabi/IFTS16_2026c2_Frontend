@@ -1,3 +1,11 @@
+## JavaScript III / Scope (Ambito o Alcance), Hoisting, funciones y tupos de funciones
+
+```js
+
+```
+
+---
+
 ## JavaScript II / Control de flujo, estructuras de control condicionales y bucles
 
 El control de flujo determina como se ejecutan las instrucciones de un programa.
@@ -71,7 +79,130 @@ alternarEstado();
 alternarEstado();
 
 
-// TO DO, operador ternario y bucles for anidados
+// Operador ternario: Es una forma mas compacta de escribir una condicion if...else
+let edad = 34;
+let mensaje = (edad >= 18) ? "Sos mayor de edad" : "Sos menor de edad";
+
+
+/*===================
+    Bucles
+=====================
+
+Pensemos en 3 condiciones que siempre deben cumplirse
+
+    1. Inicializacion
+    2. Condicion
+    3. Incremento
+
+==================
+    for 
+==================
+    
+Se usa cuando conocemos de antemano el numero de iteraciones
+
+    for (inicializacion; condicion; incremento) {
+        // Codigo a ejecutar en cada iteracion
+    }
+
+    - El bucle mas rapido en memoria, se puede cortar con break y continue
+    - Puede resultar algo dificil de leer
+*/
+// Bucle for
+for (let i = 0; i < 5; i++) {
+    console.log("Iteracion: ", i);
+    // Aca termina la primer iteracion y se incrementa, ahora 0 vale 1
+    // i = 2
+    // i = 3
+    // ...
+    // Continuara hasta que i sea 5 y la condicion de false
+}
+
+// Aca continuara la ejecucion de javascript cuando haya salido de ese loop
+
+
+/*================
+    while
+==================    
+Ejecuta el bloque de codigo mientras la condicion sea verdadera
+
+    while (condicion) {
+        // Codigo a ejecutar mientras la condicion sea verdadera
+    }
+*/
+
+let i = 0;
+
+while (i < 5) {
+    console.log("Iteracion while: ", i);
+    i++;
+}
+
+
+/*================
+    do ... while
+==================    
+Similar al while, pero la condicion se evalua despues de ejecutar el bloque de codigo, por lo que el codigo se ejecuta al menos una vez
+
+    do {
+        // Codigo a ejecutar 
+    } while (condicion);
+*/
+
+let j = 0;
+do {
+    console.log("Iteracion do...while: ", j);
+    j++;
+} while (j < 5);
+
+
+// break: Palabra clave con la que salimos de un bucle o estructura de control
+// continue: Palabra clave con la que salteamos una iteracion del bucle
+
+for (let i  = 0; i < 10; i++) {
+    if (i === 5) break; // Sale del bucle cuando i es 5
+    console.log("Iteracion con break: ", i);
+}
+
+for (let i = 0; i < 10; i++) {
+    if (i % 2 === 0) {
+        continue; // Salta las iteraciones donde i es par
+    }
+
+    console.log("Numero impar: ", i);
+}
+
+
+// switch es otra estructura de control que permite evaluar una expresion y ejecutar el codigo correspondiente al caso que coincide
+
+let diaSemana = 3;
+
+// Nos evita tener que anidar muchos else if (...), else if(...)
+switch(diaSemana) {
+    case 1:
+        console.log("Lunes");
+        break;
+
+    case 2:
+        console.log("Martes");
+        break;
+
+    case 3:
+        console.log("Miercoles");
+        break;
+
+    case 4:
+        console.log("Jueves");
+        break;
+
+    case 5:
+        console.log("Viernes");
+        break;
+
+    default:
+        console.log("Es fin de semana");
+}
+
+
 // Ejercicio sugerido, usando un bucle for anidado (un bucle for dentro de otro), hagan una tabla de multiplicar del 10
 
 /* Output
@@ -84,8 +215,9 @@ alternarEstado();
 
 10 x 9 = 90
 10 x 10 = 100
-
 */
+
+// Ejercicio sugerido para el switch, hacear una calculadora que pida valor 1, operador, valor 2 y devuelva el resultado
 ```
 
 

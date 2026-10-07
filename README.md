@@ -1,5 +1,41 @@
 # Frontend 2026 2º Cuatrimestre
 
+## Videos recomendados
+- [Video amigoscode el fin de los devs?](https://www.youtube.com/watch?v=KQgATAU6ztU)
+- [Trailer documental de Node.js](https://www.youtube.com/watch?v=SfWPqr04srM&pp=ygUPbm9kZS5qcyB0cmFpbGVy)
+
+---
+
+## Repasar Backend
+- [Playlist de Todocode de fundamentos fullstack](https://www.youtube.com/watch?v=lC6JOQLIgp0&list=PLQxX2eiEaqbxx6Ds5bd1F6LZJo7_OnZhV)
+    - Arquitectura cliente servidor
+    - Protocolo HTTP
+    - JSON
+    - Que son las APIs
+
+- [Clase de 2hs de Protocolo HTTP](https://www.youtube.com/watch?v=l6oF_RpBf64)
+
+#### Protocolo de transferencia de hipertexto (HTTP)
+- Conjunto de pasos a seguir para que dos computadoras, cliente y servidor se comuniquen en internet
+
+#### Metodos HTTP, definen que ACCION vamos a realizar
+- GET -> Obtener recursos
+- POST -> Creamos recursos
+- PUT -> Actualizamos recursos
+- DELETE -> Eliminamos recursos
+
+---
+
+## *Recordatorio para articulaciones*
+    Envienme un email de confirmacion si ya estan metidos, 
+
+    javie.rodriguez@bue.edu.ar
+    Asunto: Confirmacion Frontend Articulaciones IFTS 18
+
+    Nombre, Apellido, DNI
+
+---
+
 ## Tareas y Practicas para frontend
 - PFO 1 y 2 -> Con la entrega del 2 es suficiente
     - Elaborar un portfolio
@@ -67,7 +103,6 @@
 
 
 ## Recursos clases
-
 ### Bases fundamentales de desarrollo fullstack y como funciona el backend
 - [Clase de 2hs de Protocolo HTTP y lenguaje HTML](https://www.youtube.com/watch?v=l6oF_RpBf64)
 - [Playlist de Todocode para aprender fundamentos de programacion web](https://www.youtube.com/watch?v=lC6JOQLIgp0&list=PLQxX2eiEaqbxx6Ds5bd1F6LZJo7_OnZhV)
