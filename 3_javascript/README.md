@@ -1,6 +1,394 @@
+## *Como ejecuta las instrucciones JavaScript internamente?*
+**JavaScript internamente “lee” el código antes de ejecutarlo**, realizando un proceso en dos fases:
+
+**1. Fase de compilación** (o creación del contexto)
+Antes de ejecutar línea por línea, el motor de JavaScript analiza todo el código. En esta etapa:
+
+- Registra variables y funciones.
+- Determina el alcance (scope).
+- Prepara el entorno de ejecución.
+
+
+**2. Fase de ejecución**
+Recién después ejecuta el código en orden.
+
+
+---
+
+
 ## JavaScript III / Scope (Ambito o Alcance), Hoisting, funciones y tupos de funciones
 
 ```js
+/*======================
+    Scope
+========================
+
+Scope, alcance o ambito es un termino que se refiere al contexto en el cual las variables y funciones son accesibles y pueden ser referenciadas.
+
+
+
+/////////////////
+// Global Scope
+    - Las variables declaradas fuera de cualquier funcion o bloque tienen alcance global y son accesibles desde cualquier parte del codigo
+
+    - Incluye a var, let y const
+
+    // El alcance de funcion se refiere a todo lo que esta dentro de la funcion
+    function() {
+    
+    }
+
+    // El alcance de bloque se refiere a cualquier {}
+    if {
+    }
+
+
+
+/////////////////
+// Function Scope o Local Scope
+    - Las variables declaradas DENTRO de una funcinon solo son accesibles DENTRO de esa funcion
+    - Se dice que tienen alcance local o alcance de funcion
+    - Solamente afecta a las variables var
+
+
+
+/////////////////
+// Block Scope
+    - A partir de ES6 (2015), el estandar moderno de JavaScript, las variables let y const tienen alcance de bloque
+    - Solo son accesibles dentro del bloque en el que se declararon
+    - Que es un bloque? -> { } (pueden ser de un if, de un for, etc)
+
+*/
+
+///////////////////
+// Alcance global
+let soyGlobal = "Soy una variable global";
+
+function mostrarGlobal() {
+    console.log(soyGlobal);    
+}
+
+mostrarGlobal(); // Soy una variable global
+console.log(soyGlobal); // Soy una variable global
+
+
+///////////////////
+// Alcance de funcion
+function mostrarLocal() {
+    var localVar = "Soy una var local";
+    console.log(localVar);
+}
+
+mostrarLocal();
+// console.log(localVar); // Uncaught ReferenceError: localVar is not defined
+
+
+///////////////////
+// Alance de bloque
+if (true) {
+    let bloqueLet = "Soy una let de bloque";
+    console.log(bloqueLet);
+}
+
+// console.log(bloqueLet); // Uncaught ReferenceError: bloqueLet is not defined
+
+
+// Function Scope vs Block Scope
+
+// Aca hay un alcance de funcion
+function scopeFunction() {
+
+    // Aca hay un alcance de bloque
+    if (true) {
+        var funcionVar = "Soy de funcion"
+    }
+    // Fin del alcance de bloque
+
+    console.log(funcionVar); // Esta var SI es accesible, porque las llaves del if no encierran su alcance
+}
+// Fin del alcance de funcion
+
+scopeFunction();
+
+
+// Alcance de bloque
+function scopeBloque() {
+    if (true) {
+        var variable = "Soy una var"; // Scope de funcion, puede salir de estas {}
+        let letBloque = "Soy una let de bloque"; // Scope de bloque, NO pueden salir de las {}
+        const constBloque = "Soy una const tambien de bloque"; // Scope de bloque, NO pueden salir de las {}
+    }
+
+    console.log(variable);
+    // console.log(letBloque); // Uncaught ReferenceError: letBloque is not defined
+    // console.log(constBloque); // Uncaught ReferenceError: constBloque is not defined
+}
+
+scopeBloque();
+
+
+/*======================
+    Hoisting
+========================
+
+Las declaraciones de variables y funciones en JavaScript se "mueven hacia arriba" de su contexto de ejecucion o "scope".
+
+Solo las declaraciones son elevadas, no las inicializaciones
+
+    - var: Se elevan y se inicializan con undefined
+    - let y const: Se elevan pero NO se inicializan, lo que lleva a un error si se accede antes de la declaracion
+*/
+
+console.log(elevadaVar); // undefined
+var elevadaVar = "Soy una var elevada";
+console.log(elevadaVar); // Soy una var elevada
+
+// console.log(elevadaLet); // Uncaught ReferenceError: Cannot access 'elevadaLet' before initialization
+let elevadaLet = "Soy una let elevada";
+console.log(elevadaLet); // Soy una let elevada
+
+
+
+/*======================
+    var vs let y const
+========================
+
+- var:      tiene ambito de funcion, permite la redeclaracion y la reasignacion
+- let:      tiene ambito de bloque, no permite la redeclaracion pero si la reasignacion
+- const:    tiene ambito de bloque, no permite la redeclaracion ni la reasignacion
+*/
+
+var algo = "coso";
+var algo = "cosito"; // Redeclaracion, vuelvo a declarar una variable ya declarada previamente
+console.log(algo); // cosito
+
+let x = 10;
+// let x = 30; // NO esta permita la redeclaracion
+x = 20; // Reasignacion, es decir, asignar un nuevo valor
+console.log(x);
+
+const y = 20;
+// y = 30; // No permite reasignacion const. Uncaught TypeError: Assignment to constant variable.
+console.log(y);
+
+// Ojo porque const no me da problema a la hora de cambiar el valor de objetos y arrays, porque son tipos de datos que son mutables. Por eso una const array u objeto puede mutar, pero no reasignar valor. Porque al reasignar, CAMBIA su posicion en memoria
+
+// Los parametros son los nombres de las variables que definimos en la declaracion de la funcion
+// Los argumentos son los valores que pasamos a la funcion cuando la llamamos
+
+function saludito (nombre) { // nombre es un parametro
+    console.log(`Holis ${nombre}, como dice que le va?`); // Lo usamos a lo largo de la funcion
+}
+
+saludito("Ignacio"); // "Ignacio" es el argumento
+
+function sumaSimple(a, b) {
+    return a + b;
+}
+
+console.log(sumaSimple(5, 6)); // 11
+
+
+
+/*======================
+    Funciones en JS
+======================*/
+/*//////////////////
+// 1. Funcion declarada (Named function o basic function)
+
+Es la declaracion basica de JavaScript, usa la keyword function
+
+Se recomienda para funciones con nombre o cuando se necesite hoisting.
+Las funciones declaradas con la keyword function se puede elevar a la parte superior de su ambito, es decir, del scope que las contiene.
+
+Esto permite llamar a la funcion antes de ser declarada
+*/
+
+saludar(); // Holis
+
+function saludar() {
+    console.log("Holis")
+}
+
+
+/*//////////////////
+// Funcion anonima (Anonymous function)
+
+Son funciones que se definen sin un nombre identificador, comportandose como expresiones que se asignan a variables o se pasan como argumentos a otras funciones.
+
+A diferencia de las funciones declaradas, estas NO se elevan (hoisting) y generalmente se usan para tareas como callbacks
+
+    - Sintaxis clasica: Se usa la palabra clave function sin nombre
+    const sumar = function(a, b) {
+        return a + b
+    }
+
+    - Arrow functions: Una sintaxis mas concisa que tambien genera funciones anonimas
+    const sumar = (a, b) => a + b; // Hace exactamente lo mismo que la funcion de arriba pero en una linea
+
+
+Cuando usar funciones anonimas?
+    - Callbacks: Funciones dentro de otras funciones
+    - IIFE: Ejecucion inmediata de una funcion
+    - Eventos
+*/
+
+
+/*//////////////////
+// 2. Funcion expresada (Function expression)
+
+Es la funcion que esta adentro de una variable.
+
+Son utiles para funciones anonimas, para cuando se quiere controlar donde va a estar disponible la funcion o para cuando va a ser usada como argumento para otra funcion (callback)*/
+
+const despedida = function() {
+    console.log("Chau, nos vemos");
+}
+
+despedida();
+
+
+/*//////////////////
+// 4. Funcion flecha (Arrow function)
+
+Especialmente util para escribir funciones de una linea*/
+
+const sumar = (a, b) => a + b;
+console.log(sumar(4, 5)); // 9
+
+
+
+/*//////////////////
+// 5. Funcion de metodos (Method function)
+
+Son las funcioens definidas dentro de un objeto o clase
+*/
+
+const persona = {
+    nombre: "Maria",
+    saludar() {
+        console.log(`Hola! Me llamo ${this.nombre}`);
+    }
+}
+
+persona.saludar(); // Hola! Me llamo Maria
+
+
+/*//////////////////
+// 6. Funcion de constructor (Constructor function)
+
+Se usan para crear objetos, se invocan usando el keyword new
+*/
+
+function Usuario(nombre, id) {
+    this.nombre = nombre;
+    this.id = id;
+}
+
+const luciano = new Usuario("Luciano", 1234);
+console.log(luciano.nombre);
+
+
+/*//////////////////
+// 7. Expresion de funcion ejecutada inmediatamente (IIFE / Immediately Invoked Function Expression)
+
+Las IIFE son funciones que se ejecutan inmediatamente despues de haberse definido
+*/
+
+(function() {
+    console.log("Esta es una IIFE, al toque de definirla, la invoco")
+})(); // Esta es una IIFE, al toque de definirla, la invoco
+
+
+/*//////////////////
+// 8. Funcion de orden superior (High Order Function / HOF)
+
+Las HOF nos permiten usar otras funciones como parametros o devolver funciones como resultados, o ambos!
+
+Ejemplos son map(), filter(), find(), reduce(), forEach(), etc
+*/
+
+/*//////////////////
+// 9. Funcion asincronica (Async function)
+
+Las funciones asincronicas se declaran con la keyword async y devuelve un objeto Promise que representa el valor futuro de una operacion exitosa o erronea
+
+Se usa el operador await para detener la ejecucion del codigo de una funcion asincronica
+*/
+
+async function obtenerUsuarios() {
+
+    // Dentro de try escribimos el codigo que queremos ejecutar y que puede llegar a fallar
+    try {
+        let url = "https://jsonplaceholder.typicode.com/users";
+        // El codigo se detendra esperando que await resuelva exitosa o erroneamente esta conexion HTTP con la url
+        let response = await fetch(url); // Podria fallar la conexion HTTP (error real de red)
+
+        // Aca parseamos el JSON que recibimos en el cuerpo de la respuesta HTTP
+        let data = await response.json(); // Esta funcion .json() recibe texto plano JSON y lo transforma en un array de objetos manipulable
+
+        // Data es un array de objetos que muestro en la consola en forma de tabla
+        console.table(data);
+
+        // Ahora ya puedo realizar todas las operaciones con este array de objetos que se me proporciono dentro de la url de arriba
+
+        // Puedo iterar tambien este array de objetos y mostrar cada email por consola
+        data.forEach(user => {
+            console.log(user.email);
+        })
+
+    } catch (error) {
+        console.log(error); 
+    }
+
+
+}
+
+// obtenerUsuarios();
+
+
+/*==============================
+    Tipos de funciones flecha
+==============================*/
+
+// 1. Sin parametros: Si la funcion no lleva parametros, se pueden usar parentesis vacias
+const saludoFlecha = () => console.log("Holis! Como va?");
+saludoFlecha(); // Holis! Como va?
+
+
+// 2. Un solo parametro: Las parentesis son opcionales
+const cuadrado = x => x * x; // Aca el return esta implicito! Cuando es single line
+console.log(cuadrado(4)); // 16
+
+
+// 3. Mas de un parametro: Las parentesis son obligatorias
+const sumaFlecha = (a, b) => a + b;
+console.log(sumaFlecha(2, 3)); // 5
+
+
+// 4. Mas de una instruccion en la funcion: Si el cuerpo de la funcion tiene mas de una instruccion, necesitamos usar {} y la palabra return si queremos devolver un valor
+
+const saludarPersona = nombre => {
+    const saludo = `Hola ${nombre}! Como estas?`;
+
+    return saludo;
+}
+
+console.log(saludarPersona("Pablo")); // Hola Pablo! Como estas?
+
+
+// 5. HOF y callbacks: Las funciones de flecha son especialmente populares cuando se usan como callbacks (se pasan dentro de otras funciones)
+const numeros = [1, 2, 3, 4, 5];
+
+// map tiene dentro una arrow function de una sola linea
+const duplicar = numeros.map(num => num * 2); 
+console.log(duplicar); // [2, 4, 6, 8, 10]
+
+// map, ahora tiene una funcion declarada dentro
+const numerosCuadrados = numeros.map(function(num) {
+    return num * num
+});
+console.log(numerosCuadrados); // [1, 4, 9, 16, 25]
 
 ```
 
