@@ -1,0 +1,139 @@
+/*====================
+    Estilos generales
+====================*/
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    padding-left: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+#contenedor-portada {
+    background-image: url("https://tiendadecafe.com.ar/wp-content/uploads/2021/03/sidebar_cafe01.jpg");
+    height: 100vh;
+    background-size: cover;
+    background-position: bottom;
+    padding-top: 20px;
+}
+
+.gris {
+    color: rgba(255,255,255,.8);
+}
+
+/*====================
+    Header
+====================*/
+
+header {
+    /* border: 1px solid white; */
+    margin: 0 auto;
+    width: 90%;
+}
+
+#logo-header {
+    width: 12%;
+    /* border: 1px solid white; */
+}
+
+header nav {
+    width: 70%;
+    /* border: 1px solid white; */
+    font-weight: bold;
+}
+
+header, header ul {
+    display: flex;
+    align-items: center;
+}
+
+header ul {
+    justify-content: space-between;
+}
+
+header a {
+    color: white;
+}
+
+
+/*====================
+    Portada
+====================*/
+.portada-texto h4, .portada-texto h2 {
+    color: white;
+    margin-bottom: 0;
+}
+
+.portada-texto p {
+    font-size: 16px;
+}
+
+.portada-texto h4 {
+    font-size: 68px;
+}
+
+
+.portada-texto h2 {
+    font-size: 48px;
+}
+
+
+.btn-transparente button {
+    color: white;
+    background: rgba(0, 0, 0, 0);
+    padding: 22px;
+    border: 1px solid white;
+    border-radius: 2px;
+}
+
+#portada-principal {
+    height: 80%;
+    /* border: 1px solid white; */
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+
+.titulo-section {
+    text-align: center;
+    font-size: 36px;
+}
+
+.linea-dorada {
+    width: 120px;
+    border: 1px solid #c7a17a;
+}
+
+.parrafo-section {
+    color: #c7a17a;
+    text-align: center;
+    font-size: 16px;
+}
+
+.cafes-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.carta-cafe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carta-cafe_img img {
+    width: 260px;
+    height: 260px
+}
